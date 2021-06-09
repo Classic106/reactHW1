@@ -8,19 +8,21 @@
 .header > form > *{
     margin: 15px;
 }
-.main{
+.users{
     display: flex;
     width: 100%;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 .user_cart{
-    width: 33.333%;
+    width: 32.5%;
     display: flex;
     background: red;
     flex-direction: column;
     justify-content: center;
     padding: 15px;
+    border: 1px solid #000;
+    margin: 5px;
 }
 .user_cart img{
     width: 50%;

@@ -1,5 +1,5 @@
 export default function Modal(props) {
-    //console.log(props);
+
     return (
     <div className='modal_page'>
         <div className='backModal' onClick={()=>props.openModal(false)}></div>
@@ -11,35 +11,40 @@ export default function Modal(props) {
                 for(let key in props.user){
                     
                     if(key === 'friends') {
-                        arr.push(<div key={key}>{key}: {(()=>{
+                        arr.push(
+                            <div key={key}>{key}: {(()=>{
                             
-                            let arr = [];
+                                let arr = [];
 
-                            for(let i = 0; i < props.user[key].length; i++){
-                                arr.push(<span key={props.user[key][i].name}>
-                                            {props.user[key][i].name}
-                                            {(props.user[key].length-1 === i) ? '' : ', '}
-                                        </span>);
-                                }
-                            return arr;
-
-                            })()
-                        }</div>);
+                                for(let i = 0; i < props.user[key].length; i++){
+                                    arr.push(<span
+                                                key={props.user[key][i].name}>
+                                                {props.user[key][i].name}
+                                                {(props.user[key].length-1 === i) ? '' : ', '}
+                                            </span>);
+                                    }
+                                return arr;
+                            })()}
+                        </div>);
+                        
                         continue;
                     }
                     
                     if(key === 'tags') {
-                        arr.push(<div key={key}>{key}: {(()=>{
+                        arr.push(
+                            <div key={key}>{key}: {(()=>{
 
-                            let str = '';
+                                let str = '';
                             
-                            for(let i = 0; i < props.user[key].length; i++){
-                                str += props.user[key][i]+',';
-                            }
+                                for(let i = 0; i < props.user[key].length; i++){
+                                    str += props.user[key][i]+',';
+                                }
                             
-                            return str.slice(0, str.length-1);
+                                return str.slice(0, str.length-1);
 
-                        })()}</div>);
+                                })()}
+                            </div>
+                        );
                         continue;
                     }
                     
@@ -50,14 +55,15 @@ export default function Modal(props) {
 
                     if(key === 'registered') {
                         arr.push(
-                        <span key={key}>{key}: {new Date(Date(props.user[key])).toLocaleDateString('ru-Ru')}</span>
+                        <span key={key}>
+                            {key}: {new Date(Date(props.user[key])).toLocaleDateString('ru-Ru')}
+                        </span>
                         );
                         continue;
                     }
 
                     arr.push(<span key={key}>{key}: {props.user[key]}</span>);
                 }
-
                     return arr;
                 })()
             }

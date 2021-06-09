@@ -9,7 +9,7 @@ export default function Header(props){
                             props.updateData([...props.data]);
                         }
                 }/>
-                <span>Age: </span>
+                <span>Sort by age: </span>
                 <select value={props.data[1]} onChange={e=>{
                     props.data[1] = e.target.value;
                     props.updateData([...props.data]);
